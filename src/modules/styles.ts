@@ -9,12 +9,13 @@ export const StyledForm = styled.form`
     justify-content: flex-start;
     width: 100%;
     padding-bottom: 1.2rem;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
 
     .form {
         &__filter {
             &--main {
-                flex: 1;
+                flex: 1 1 50rem;
+
                 & > * {
                     margin-bottom: 1rem;
                 }
@@ -45,10 +46,12 @@ export const StyledForm = styled.form`
         &__repo {
             &--new {
                 flex: 1;
-                max-width: max-content;
+                /* max-width: max-content; */
                 margin-bottom: 1rem;
+                flex: 1 1 20rem;
 
                 button {
+                    width: 100%;
                     padding: 0.5rem 1.3rem;
                     border-radius: 0.6rem;
                     color: var(--color-btn-primary-text);
@@ -64,6 +67,19 @@ export const StyledForm = styled.form`
             }
         }
     }
+
+    @media screen and (min-width: 1000px) {
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        .form {
+            &__repo {
+                &--new {
+                    max-width: max-content;
+                }
+            }
+        }
+    }
 `;
 
 export const StyledRepo = styled.li`
@@ -71,6 +87,11 @@ export const StyledRepo = styled.li`
     border-bottom: 0.1rem solid var(--color-border-default);
     justify-content: space-between !important;
     color: var(--color-fg-muted) !important;
+    flex-wrap: wrap;
+
+    & > * {
+        margin-bottom: 1rem;
+    }
 
     &:first-child {
         border-top: 0.1rem solid var(--color-border-default);
@@ -88,6 +109,7 @@ export const StyledRepo = styled.li`
         &__head {
             text-align: left;
             justify-content: flex-start;
+            flex-wrap: wrap;
 
             & > * {
                 margin-right: 0.4rem;
@@ -139,7 +161,6 @@ export const StyledRepo = styled.li`
         &__star {
             &--cont {
                 align-items: stretch;
-                /* background-color: orange; */
 
                 button,
                 select {
@@ -164,6 +185,9 @@ export const StyledRepo = styled.li`
                 }
 
                 .select-wrapper {
+                    width: 2.56rem;
+                    flex-shrink: 0;
+
                     &::after {
                         right: 0.6rem;
                         transform: translate(-50%, 50%);
@@ -171,12 +195,12 @@ export const StyledRepo = styled.li`
                 }
 
                 select {
+                    width: 100%;
                     border-right-width: 0.1rem;
                     border-top-right-radius: 0.6rem;
                     border-bottom-right-radius: 0.6rem;
                     border-left: 0;
                     padding: 0.5rem 0rem 0.5rem 0;
-                    width: max-content;
                 }
             }
         }

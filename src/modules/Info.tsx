@@ -34,13 +34,15 @@ const Info: FC = () => {
 
     return (
         <section className="profile__info">
-            <figure className="profile__img">
-                <img alt={profile.name} src={profile.avatar_url} />
-            </figure>
-            <p className="profile__name">
-                <span>{profile.name}</span>
-                <span>{profile.login}</span>
-            </p>
+            <header className="flex profile__info--header">
+                <figure className="profile__img">
+                    <img alt={profile.name} src={profile.avatar_url} />
+                </figure>
+                <p className="profile__name">
+                    <span>{profile.name}</span>
+                    <span>{profile.login}</span>
+                </p>
+            </header>
             {profile.bio && <p className="profile__bio">{profile.bio}</p>}
             <button className="profile__follow">Follow</button>
             <div className="flex profile__following--cont">

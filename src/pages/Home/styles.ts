@@ -16,20 +16,22 @@ export const StyledHome = styled.main`
 
     .profile {
         &__info {
-            flex: 1;
-            max-width: max-content;
-            /* position: sticky; */
-            /* top: 2rem; */
+            flex: 1 1 35rem;
 
             & > * {
                 margin-bottom: 0.8rem;
             }
+
+            &--header {
+                justify-content: flex-start;
+            }
         }
 
         &__img {
-            max-width: 29rem;
-            max-height: 29rem;
+            max-width: 15rem;
+            max-height: 15rem;
             border-radius: 50%;
+            margin-right: 1.5rem;
 
             img {
                 border-radius: 50%;
@@ -56,7 +58,6 @@ export const StyledHome = styled.main`
         &__follow {
             display: block;
             width: 100%;
-            max-width: 20rem;
             padding: 0.5rem 1.6rem 0.6rem;
             text-align: center;
             border-radius: 0.6rem;
@@ -138,6 +139,23 @@ export const StyledHome = styled.main`
                         color: var(--color-accent-fg);
                     }
                 }
+            }
+        }
+    }
+
+    @media screen and (min-width: 691px) {
+        .profile {
+            &__info {
+                max-width: max-content;
+
+                &--header {
+                    display: block;
+                }
+            }
+
+            &__img {
+                max-width: 29rem;
+                max-height: 29rem;
             }
         }
     }
