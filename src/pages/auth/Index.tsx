@@ -1,50 +1,27 @@
-import { FC, useEffect, useState } from "react";
-import { GithubAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "./../../configs/firebase";
+import { FC, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { Authenticated } from "../../App";
 
 import { StyledAuth } from "./styles";
 
-interface LoginRes {
-    _tokenResponse: {
-        idToken: string;
-        refreshToken: string;
-        localId: string;
-        oauthAccessToken: string;
-    };
+interface IAuth {
+    handleLogin: () => void;
+    authenticated: Authenticated;
 }
 
-const Auth: FC = () => {
+const Auth: FC<IAuth> = ({ authenticated, handleLogin }) => {
     useEffect(() => {
         document.title = "Log In";
     }, []);
 
-    const [authenticated, setAuthenticated] = useState({
-        loading: false,
-        token: null,
-        error: null,
-    });
-
-    const handleLogin = async () => {
-        setAuthenticated((prev) => ({ ...prev, loading: true }));
-        try {
-            const res = (await signInWithPopup(
-                auth,
-                new GithubAuthProvider()
-            )) as unknown as LoginRes;
-            const { _tokenResponse } = res;
-            console.log(_tokenResponse);
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setAuthenticated((prev) => ({ ...prev, loading: false }));
-        }
-    };
-
-    console.log({ authenticated });
+    if (authenticated.loading) return null;
+    if (authenticated.token) return <Navigate to="/" />;
 
     return (
         <StyledAuth>
-            <button onClick={handleLogin}>Continue with github</button>
+            <button className="btn" onClick={handleLogin}>
+                Continue with github
+            </button>
         </StyledAuth>
     );
 };

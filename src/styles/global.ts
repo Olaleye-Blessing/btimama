@@ -115,4 +115,24 @@ export const GlobalStyles = createGlobalStyle`
         align-items: center;
         justify-content: center;
     }
+
+    .height {
+        height: 100vh;
+    }
+
+    .column {
+        flex-direction: column;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.5rem 1rem 0.7rem;
+        border-radius: 1rem;
+        border: 0.1rem solid var(--color-border-default);
+
+        &:hover {
+            text-decoration: none;
+            color: var(--color-accent-fg);
+        }
+    }
 `;
