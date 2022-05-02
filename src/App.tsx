@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Auth from "./pages/auth/Index";
 import Home from "./pages/Home/Index";
@@ -25,7 +25,7 @@ export interface Authenticated {
 
 function App() {
     const [authenticated, setAuthenticated] = useState({
-        loading: false,
+        loading: true,
         token: "",
         error: "",
     });
@@ -52,6 +52,18 @@ function App() {
             setAuthenticated((prev) => ({ ...prev, loading: false }));
         }
     };
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                setAuthenticated((prev) => ({
+                    ...prev,
+                    token: (user as any).accessToken,
+                }));
+            }
+            setAuthenticated((prev) => ({ ...prev, loading: false }));
+        });
+    }, []);
 
     return (
         <>
