@@ -32,10 +32,24 @@ export const StyledHome = styled.main`
             max-height: 15rem;
             border-radius: 50%;
             margin-right: 1.5rem;
+            position: relative;
 
             img {
                 border-radius: 50%;
                 box-shadow: 0 0 0 1px var(--color-avatar-border);
+            }
+
+            &--status {
+                position: absolute;
+                bottom: 2rem;
+                right: 2rem;
+                width: 4rem;
+                height: 4rem;
+                border-radius: 50%;
+                box-shadow: 0 0 0 1px var(--color-avatar-border);
+                z-index: 7;
+                background-color: var(--color-canvas-default);
+                transform: translate(50%, 50%);
             }
         }
 
@@ -156,6 +170,10 @@ export const StyledHome = styled.main`
             &__img {
                 max-width: 29rem;
                 max-height: 29rem;
+
+                &--status {
+                    transform: translate(0);
+                }
             }
         }
     }

@@ -37,6 +37,13 @@ const Info: FC = () => {
             <header className="flex profile__info--header">
                 <figure className="profile__img">
                     <img alt={profile.name} src={profile.avatar_url} />
+
+                    <span
+                        className="profile__img--status flex"
+                        aria-label="Status: Good"
+                    >
+                        😇
+                    </span>
                 </figure>
                 <p className="profile__name">
                     <span>{profile.name}</span>
